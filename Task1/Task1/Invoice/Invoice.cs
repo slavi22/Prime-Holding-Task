@@ -5,7 +5,6 @@ namespace Task1.Invoice;
 
 public static class Invoice
 {
-
     public static void PrintCarInvoice(CarRental carRentalModel)
     {
         Console.Clear();
@@ -25,6 +24,121 @@ public static class Invoice
         sb.AppendLine($"Total insurance: ${carRentalModel.TotalInsurance.ToString("0.00")}");
         sb.AppendLine($"Total: ${carRentalModel.Total.ToString("0.00")}");
         sb.AppendLine("XXXXXXXXXX");
+        Console.WriteLine(sb.ToString());
+    }
+
+    public static void PrintMotorCycleInvoice(MotorcycleRental motorcycleRentalModel)
+    {
+        Console.Clear();
+        StringBuilder sb = new StringBuilder();
+        if (motorcycleRentalModel.SelectedMotorcycle.DriverAge<25)
+        {
+            sb.AppendLine("XXXXXXXXXX");
+            sb.AppendLine($"Date: {DateTime.Now.ToString("yyyy-MM-dd")}");
+            sb.AppendLine($"Customer Name: name");
+            sb.AppendLine($"Rented Vehicle: {motorcycleRentalModel.SelectedMotorcycle.Brand} {motorcycleRentalModel.SelectedMotorcycle.Model}\n");
+            sb.AppendLine($"Reservation start date: {motorcycleRentalModel.RentalStart.ToString("yyyy-MM-dd")}");
+            sb.AppendLine($"Reservation end date: {motorcycleRentalModel.RentalEnd.ToString("yyyy-MM-dd")}");
+            sb.AppendLine($"Reserved rental days: {motorcycleRentalModel.TotalRentalDays} days\n");
+            sb.AppendLine($"Actual Return date: {motorcycleRentalModel.ActualReturnDate.ToString("yyyy-MM-dd")}");
+            sb.AppendLine($"Actual rental days: {motorcycleRentalModel.ActualRentalDays} days\n");
+            sb.AppendLine($"Rental cost per day: ${motorcycleRentalModel.DailyRentalCost.ToString("0.00")}");
+            sb.AppendLine($"Initial insurance pay: ${motorcycleRentalModel.InsuranceDailyCostInitial.ToString("0.00")}");
+            sb.AppendLine($"Insurance addition per day: ${motorcycleRentalModel.InsuranceAdditionPerDay.ToString("0.00")}");
+            sb.AppendLine($"Insurance per day: ${motorcycleRentalModel.InsuranceDailyCost.ToString("0.00")}\n");
+            sb.AppendLine($"Total rent: ${motorcycleRentalModel.TotalRental.ToString("0.00")}");
+            sb.AppendLine($"Total insurance: ${motorcycleRentalModel.TotalInsurance.ToString("0.00")}");
+            sb.AppendLine($"Total: ${motorcycleRentalModel.Total.ToString("0.00")}");
+            sb.AppendLine("XXXXXXXXXX");
+        }
+        else
+        {
+            sb.AppendLine("XXXXXXXXXX");
+            sb.AppendLine($"Date: {DateTime.Now.ToString("yyyy-MM-dd")}");
+            sb.AppendLine($"Customer Name: name");
+            sb.AppendLine($"Rented Vehicle: {motorcycleRentalModel.SelectedMotorcycle.Brand} {motorcycleRentalModel.SelectedMotorcycle.Model}\n");
+            sb.AppendLine($"Reservation start date: {motorcycleRentalModel.RentalStart.ToString("yyyy-MM-dd")}");
+            sb.AppendLine($"Reservation end date: {motorcycleRentalModel.RentalEnd.ToString("yyyy-MM-dd")}");
+            sb.AppendLine($"Reserved rental days: {motorcycleRentalModel.TotalRentalDays} days\n");
+            sb.AppendLine($"Actual Return date: {motorcycleRentalModel.ActualReturnDate.ToString("yyyy-MM-dd")}");
+            sb.AppendLine($"Actual rental days: {motorcycleRentalModel.ActualRentalDays} days\n");
+            sb.AppendLine($"Rental cost per day: ${motorcycleRentalModel.DailyRentalCost.ToString("0.00")}");
+            sb.AppendLine($"Insurance per day: ${motorcycleRentalModel.InsuranceDailyCost.ToString("0.00")}\n");
+            sb.AppendLine($"Total rent: ${motorcycleRentalModel.TotalRental.ToString("0.00")}");
+            sb.AppendLine($"Total insurance: ${motorcycleRentalModel.TotalInsurance.ToString("0.00")}");
+            sb.AppendLine($"Total: ${motorcycleRentalModel.Total.ToString("0.00")}");
+            sb.AppendLine("XXXXXXXXXX");
+        }
+        Console.WriteLine(sb.ToString());
+    }
+
+    public static void PrintVanInvoice(VanRental vanRentalModel)
+    {
+        Console.Clear();
+        StringBuilder sb = new StringBuilder();
+        if (vanRentalModel.SelectedVan.DriverYOE<25)
+        {
+            if (vanRentalModel.TotalRentalDays != vanRentalModel.ActualRentalDays)
+            {
+                sb.AppendLine("XXXXXXXXXX");
+                sb.AppendLine($"Date: {DateTime.Now.ToString("yyyy-MM-dd")}");
+                sb.AppendLine($"Customer Name: name");
+                sb.AppendLine($"Rented Vehicle: {vanRentalModel.SelectedVan.Brand} {vanRentalModel.SelectedVan.Model}\n");
+                sb.AppendLine($"Reservation start date: {vanRentalModel.RentalStart.ToString("yyyy-MM-dd")}");
+                sb.AppendLine($"Reservation end date: {vanRentalModel.RentalEnd.ToString("yyyy-MM-dd")}");
+                sb.AppendLine($"Reserved rental days: {vanRentalModel.TotalRentalDays} days\n");
+                sb.AppendLine($"Actual Return date: {vanRentalModel.ActualReturnDate.ToString("yyyy-MM-dd")}");
+                sb.AppendLine($"Actual rental days: {vanRentalModel.ActualRentalDays} days\n");
+                sb.AppendLine($"Rental cost per day: ${vanRentalModel.DailyRentalCost.ToString("0.00")}");
+                sb.AppendLine($"Initial insurance pay: ${vanRentalModel.InsuranceDailyCostInitial.ToString("0.00")}");
+                sb.AppendLine($"Insurance discount per day: ${vanRentalModel.InsuranceDiscountPerDay.ToString("0.00")}");
+                sb.AppendLine($"Insurance per day: ${vanRentalModel.InsuranceDailyCost.ToString("0.00")}\n");
+                sb.AppendLine($"Early return discount for rent: ${vanRentalModel.EarlyReturnDiscountRent.ToString("0.00")}");
+                sb.AppendLine($"Early return discount for insurance: ${vanRentalModel.EarlyReturnDiscountInsurance.ToString("0.00")}\n");
+                sb.AppendLine($"Total rent: ${vanRentalModel.TotalRental.ToString("0.00")}");
+                sb.AppendLine($"Total insurance: ${vanRentalModel.TotalInsurance.ToString("0.00")}");
+                sb.AppendLine($"Total: ${vanRentalModel.Total.ToString("0.00")}");
+                sb.AppendLine("XXXXXXXXXX");
+            }
+            else
+            {
+                sb.AppendLine("XXXXXXXXXX");
+                sb.AppendLine($"Date: {DateTime.Now.ToString("yyyy-MM-dd")}");
+                sb.AppendLine($"Customer Name: name");
+                sb.AppendLine($"Rented Vehicle: {vanRentalModel.SelectedVan.Brand} {vanRentalModel.SelectedVan.Model}\n");
+                sb.AppendLine($"Reservation start date: {vanRentalModel.RentalStart.ToString("yyyy-MM-dd")}");
+                sb.AppendLine($"Reservation end date: {vanRentalModel.RentalEnd.ToString("yyyy-MM-dd")}");
+                sb.AppendLine($"Reserved rental days: {vanRentalModel.TotalRentalDays} days\n");
+                sb.AppendLine($"Actual Return date: {vanRentalModel.ActualReturnDate.ToString("yyyy-MM-dd")}");
+                sb.AppendLine($"Actual rental days: {vanRentalModel.ActualRentalDays} days\n");
+                sb.AppendLine($"Rental cost per day: ${vanRentalModel.DailyRentalCost.ToString("0.00")}");
+                sb.AppendLine($"Initial insurance pay: ${vanRentalModel.InsuranceDailyCostInitial.ToString("0.00")}");
+                sb.AppendLine($"Insurance discount per day: ${vanRentalModel.InsuranceDiscountPerDay.ToString("0.00")}");
+                sb.AppendLine($"Insurance per day: ${vanRentalModel.InsuranceDailyCost.ToString("0.00")}\n");
+                sb.AppendLine($"Total rent: ${vanRentalModel.TotalRental.ToString("0.00")}");
+                sb.AppendLine($"Total insurance: ${vanRentalModel.TotalInsurance.ToString("0.00")}");
+                sb.AppendLine($"Total: ${vanRentalModel.Total.ToString("0.00")}");
+                sb.AppendLine("XXXXXXXXXX");
+            }
+        }
+        else
+        {
+            sb.AppendLine("XXXXXXXXXX");
+            sb.AppendLine($"Date: {DateTime.Now.ToString("yyyy-MM-dd")}");
+            sb.AppendLine($"Customer Name: name");
+            sb.AppendLine($"Rented Vehicle: {vanRentalModel.SelectedVan.Brand} {vanRentalModel.SelectedVan.Model}\n");
+            sb.AppendLine($"Reservation start date: {vanRentalModel.RentalStart.ToString("yyyy-MM-dd")}");
+            sb.AppendLine($"Reservation end date: {vanRentalModel.RentalEnd.ToString("yyyy-MM-dd")}");
+            sb.AppendLine($"Reserved rental days: {vanRentalModel.TotalRentalDays} days\n");
+            sb.AppendLine($"Actual Return date: {vanRentalModel.ActualReturnDate.ToString("yyyy-MM-dd")}");
+            sb.AppendLine($"Actual rental days: {vanRentalModel.ActualRentalDays} days\n");
+            sb.AppendLine($"Rental cost per day: ${vanRentalModel.DailyRentalCost.ToString("0.00")}");
+            sb.AppendLine($"Initial insurance pay: ${vanRentalModel.InsuranceDailyCostInitial.ToString("0.00")}");
+            sb.AppendLine($"Total rent: ${vanRentalModel.TotalRental.ToString("0.00")}");
+            sb.AppendLine($"Total insurance: ${vanRentalModel.TotalInsurance.ToString("0.00")}");
+            sb.AppendLine($"Total: ${vanRentalModel.Total.ToString("0.00")}");
+            sb.AppendLine("XXXXXXXXXX");
+        }
         Console.WriteLine(sb.ToString());
     }
 }

@@ -21,4 +21,9 @@ public static class RentalCalculator
     {
         return actualRental + remainingRental + insurance;
     }
+
+    public static decimal CalculateEarlyReturnDiscount(int remainingDaysOfRental, decimal dailyRentalCost)
+    {
+        return 0;
+    }
 }

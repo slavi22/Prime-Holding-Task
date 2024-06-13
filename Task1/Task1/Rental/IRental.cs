@@ -18,6 +18,6 @@ public interface IRental
     public decimal TotalInsurance { get; set; }
     public decimal Total { get; set; }
 
-    public void Rent(Vehicle selectedCar, DateTime rentalStart, DateTime rentalEnd, DateTime actualReturnDate, int totalRentalDays, int actualRentalDays);
+    public void Rent(Vehicle selectedVehicle, DateTime rentalStart, DateTime rentalEnd, DateTime actualReturnDate, int totalRentalDays, int actualRentalDays);
     public void Return();
 }

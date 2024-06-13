@@ -1,9 +1,8 @@
-﻿using System.Text;
-using Task1.Vehicles;
+﻿using Task1.Vehicles;
 
 namespace Task1.Rental;
 
-public class CarRental : IRental
+public class VanRental : IRental
 {
     public decimal DailyRentalCost { get; set; }
     public DateTime RentalStart { get; set; }
@@ -19,34 +18,46 @@ public class CarRental : IRental
     public decimal TotalInsurance { get; set; }
     public decimal Total { get; set; }
 
-    public Car SelectedCar { get; set; }
+    public Van SelectedVan { get; set; }
+    //TODO - add all those new properties in the interface
+    public decimal InsuranceDailyCostInitial { get; set; }
+    public decimal InsuranceDiscountPerDay { get; set; }
+    public decimal EarlyReturnDiscountRent { get; set; }
+    public decimal EarlyReturnDiscountInsurance { get; set; }
 
 
     public void Rent(Vehicle selectedVehicle, DateTime rentalStart, DateTime rentalEnd, DateTime actualReturnDate,
         int totalRentalDays, int actualRentalDays)
     {
-        SelectedCar = (Car)selectedVehicle;
+        SelectedVan = (Van)selectedVehicle;
         RentalStart = rentalStart;
         RentalEnd = rentalEnd;
         ActualReturnDate = actualReturnDate;
         TotalRentalDays = totalRentalDays;
         ActualRentalDays = actualRentalDays;
-        DailyRentalCost = ActualRentalDays <= 7 ? 20m : 15m;
-        InsuranceDailyCost = decimal.Parse(!SelectedCar.CarHasHighSafety
-            ? (selectedVehicle.VehicleValue * 0.0001m).ToString("0.00")
-            : (selectedVehicle.VehicleValue * 0.0001m * 0.9m).ToString("0.00"));
+        DailyRentalCost = ActualRentalDays <= 7 ? 50m : 40m;
+        InsuranceDailyCostInitial = selectedVehicle.VehicleValue * 0.0003m;
+        if (SelectedVan.DriverYOE > 5)
+        {
+            InsuranceDailyCost = InsuranceDailyCostInitial * 0.85m;
+            InsuranceDiscountPerDay = InsuranceDailyCostInitial - InsuranceDailyCost;
+        }
+        else
+        {
+            InsuranceDailyCost = InsuranceDailyCostInitial;
+        }
         RemainingRentalDays = TotalRentalDays - ActualRentalDays;
         ActualRentalPrice = RentalCalculator.CalculateActualTimeRented(ActualRentalDays, DailyRentalCost);
         RemainingRentalPrice = RentalCalculator.CalculateRemainingDays(RemainingRentalDays, DailyRentalCost);
+        EarlyReturnDiscountRent = RentalCalculator.CalculateRemainingDays(RemainingRentalDays, DailyRentalCost);
+        EarlyReturnDiscountInsurance = RentalCalculator.CalculateInsurance(RemainingRentalDays, InsuranceDailyCost);
         TotalRental = ActualRentalPrice + RemainingRentalPrice;
         TotalInsurance = RentalCalculator.CalculateInsurance(ActualRentalDays, InsuranceDailyCost);
         Total = RentalCalculator.CalculateTotalPrice(ActualRentalPrice, RemainingRentalPrice, TotalInsurance);
-
     }
-
 
     public void Return()
     {
-        Invoice.Invoice.PrintCarInvoice(this);
+        Invoice.Invoice.PrintVanInvoice(this);
     }
 }
