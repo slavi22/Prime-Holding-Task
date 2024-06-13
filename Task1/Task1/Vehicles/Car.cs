@@ -3,7 +3,7 @@
 public class Car : Vehicle
 {
     public int SafetyRating { get; set; }
-    private bool _carHasHighSafety;
+    public bool CarHasHighSafety { get; }
 
 
     public Car(string brand, string model, decimal vehicleValue, int safetyRating) : base(brand, model, vehicleValue)
@@ -13,7 +13,7 @@ public class Car : Vehicle
         {
             if (SafetyRating >= 4)
             {
-                _carHasHighSafety = true;
+                CarHasHighSafety = true;
             }
         }
         else
