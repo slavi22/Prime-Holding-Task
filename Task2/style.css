@@ -1,0 +1,119 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    .row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .column {
+        flex: 1 1 100%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .row {
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    .column {
+        flex: 1 1 45%;
+    }
+
+    .lease-period-div {
+        order: 2;
+    }
+
+    .down-payment-div {
+        order: 3;
+    }
+}
+
+@media (min-width: 1025px) {
+    .row {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .column {
+        flex: 1 1 30%;
+    }
+}
+
+
+@media (max-width: 1622px) {
+    .lease-period-div {
+        order: 2;
+    }
+
+    .down-payment-div {
+        order: 3;
+    }
+
+    .container {
+        height: 100%;
+    }
+}
+
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    min-height: 70vh;
+    width: 100%;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 40%;
+    padding: 16px;
+    min-width: 400px;
+    max-width: 800px;
+}
+
+/*row and column code -> https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01*/
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 15px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 300px;
+}
+
+.column > h1 {
+    text-align: center;
+}
+
+.column > input[type=range] {
+    margin-top: 2em;
+}
+
+.column > label, .column > p {
+    font-size: 21px;
+    font-family: Arial, serif;
+}
+
+.column > p{
+    height: 0;
+}
