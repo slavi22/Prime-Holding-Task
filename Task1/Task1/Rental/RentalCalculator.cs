@@ -12,6 +12,7 @@ public static class RentalCalculator
         return remainingDaysOfRental * dailyRentalCost / 2;
     }
 
+
     public static decimal CalculateInsurance(int actualDaysOfRental, decimal insuranceDailyCost)
     {
         return actualDaysOfRental * insuranceDailyCost;
@@ -24,6 +25,11 @@ public static class RentalCalculator
 
     public static decimal CalculateEarlyReturnDiscount(int remainingDaysOfRental, decimal dailyRentalCost)
     {
-        return 0;
+        return remainingDaysOfRental * dailyRentalCost / 2;
+    }
+
+    public static decimal CalculateEarlyReturnDiscountInsurance(int remainingDaysOfRental, decimal insuranceDailyCost)
+    {
+        return remainingDaysOfRental * insuranceDailyCost;
     }
 }

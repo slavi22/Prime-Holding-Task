@@ -2,7 +2,7 @@
 
 public class Car : Vehicle
 {
-    public int SafetyRating { get; set; }
+    public int SafetyRating { get; }
     public bool CarHasHighSafety { get; }
 
 
