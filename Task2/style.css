@@ -1,8 +1,4 @@
-﻿* {
-    box-sizing: border-box;
-}
-
-@media (max-width: 600px) {
+﻿@media (max-width: 600px) {
     .row {
         flex-direction: column;
         gap: 10px;
@@ -41,6 +37,14 @@
     .column {
         flex: 1 1 30%;
     }
+
+    .bottom-row{
+        padding-bottom: 2em !important;
+    }
+
+    .bottom-row .column p {
+        margin-bottom: 10px;
+    }
 }
 
 
@@ -56,6 +60,24 @@
     .container {
         height: 100%;
     }
+
+    .bottom-row{
+        gap: 20px !important;
+        text-align: start !important;
+        line-height: 0;
+    }
+
+    .bottom-row .column p {
+        margin-bottom: 10px;
+    }
+
+    .bottom-row-left-column::after{
+        display: none;
+    }
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 
@@ -114,6 +136,28 @@ html, body {
     font-family: Arial, serif;
 }
 
-.column > p{
+.column > p {
     height: 0;
+}
+
+.bottom-row{
+    padding-bottom: 1em;
+    text-align: center
+}
+
+/*relative vs absolute vs fixed -> https://www.youtube.com/watch?v=1y93d1lX4Xs*/
+
+.bottom-row-left-column{
+    position: relative;
+}
+
+/*after element custom right side border size -> https://stackoverflow.com/a/21338562*/
+.bottom-row-left-column::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    top: 35%;
+    left: 100%;
+    border-right: 2.5px solid rgba(128,128,128, 0.7);
+    border-radius: 10px;
 }
