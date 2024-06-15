@@ -64,6 +64,7 @@
     .bottom-row{
         gap: 20px !important;
         text-align: start !important;
+        /*what line height does here -> https://stackoverflow.com/a/14850381 */
         line-height: 0;
     }
 
@@ -107,8 +108,7 @@ html, body {
     max-width: 800px;
 }
 
-/*row and column code -> https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01*/
-
+/*row and column code -> https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01 */
 .row {
     display: flex;
     flex-direction: row;
@@ -145,19 +145,22 @@ html, body {
     text-align: center
 }
 
-/*relative vs absolute vs fixed -> https://www.youtube.com/watch?v=1y93d1lX4Xs*/
-
+/*relative vs absolute vs fixed -> https://www.youtube.com/watch?v=1y93d1lX4Xs */
 .bottom-row-left-column{
     position: relative;
 }
 
-/*after element custom right side border size -> https://stackoverflow.com/a/21338562*/
+/*after element custom right side border size -> https://stackoverflow.com/a/21338562 */
 .bottom-row-left-column::after {
     content: "";
     position: absolute;
     height: 100%;
     top: 35%;
-    left: 100%;
+    left: calc(100% + 7.5px) !important;
     border-right: 2.5px solid rgba(128,128,128, 0.7);
     border-radius: 10px;
+}
+
+#car-value-input.invalid:focus, #down-payment-input.invalid:focus{
+    outline-color: red;
 }
