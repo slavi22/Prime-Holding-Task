@@ -32,12 +32,14 @@ document.addEventListener("DOMContentLoaded", function () {
             carValueInput.classList.remove("invalid");
             carValueInput.value = carValueRange.value;
         }
+        calculateLeasing();
     });
     downPaymentInput.addEventListener("focusout", function () {
         if (document.activeElement.id !== downPaymentInput.id) {
             downPaymentInput.classList.remove("invalid");
             downPaymentInput.value = downPaymentRange.value;
         }
+        calculateLeasing();
     })
     carValueRange.addEventListener("input", function () {
         carValueInput.value = carValueRange.value;
